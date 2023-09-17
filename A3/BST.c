@@ -3,25 +3,17 @@
 
 typedef struct
 {
-
-    // void * parent;
     struct node *left_child;
     struct node *right_child;
     int value;
-
 } node;
-
-
 
 
 typedef struct
 {
-
     int size;
     node *root;
-
 } BST;
-
 
 
 
@@ -35,6 +27,15 @@ node *new_node(int value)
     return output;
 }
 
+
+
+BST * new_BST(){
+    BST * output;
+    output = calloc(1,sizeof(BST));
+    output->size =0;
+    output->root=NULL;
+    return output; 
+}
 
 
 
@@ -54,11 +55,10 @@ node *insert_node(node *root, int value)
     }
     else
     {
-        printf("Error");
+        printf("Equal");
     }
     return root;
 }
-
 
 
 
@@ -81,7 +81,7 @@ void add(BST *input, int value)
     }
     else
     {
-        printf("Error");
+        printf("Equal");
     }
 }
 
@@ -91,10 +91,8 @@ void add(BST *input, int value)
 int main()
 {
 
-    BST *test;
-    test->root = NULL;
-    test->size = 0;
-
+    BST *test = new_BST();
+    
     add(test, 5);
     add(test, 6);
     add(test, 7);
