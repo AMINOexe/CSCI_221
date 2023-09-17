@@ -47,12 +47,15 @@ node * insert_node(node * root, int value){
 BST t_add(BST input, int value){
     if(input.root==NULL){
         input.root = new_node(value);
+        input.size +=1;
     }
     else if(value < input.root->value){
        input.root->left_child = insert_node(input.root->left_child,value);
+       input.size +=1;
     }
     else if(value > input.root -> value){
        input.root->right_child = insert_node(input.root->right_child,value);
+       input.size +=1;
     }
     else{
         printf("Error");
@@ -65,6 +68,8 @@ int main(){
 
     BST test;
     test.root = NULL;
+    test.size =0;
+    
     test = t_add(test,5);
     test = t_add(test,6);
 
@@ -72,7 +77,8 @@ int main(){
     int value_out = output->value;
 
 
-    printf("root value: %d\n",value_out);
+    printf("Value Out: %d\n",value_out);
+    printf("BST size: %d\n",test.size);
 
 return 0;
 }
