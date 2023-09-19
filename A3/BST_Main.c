@@ -6,13 +6,18 @@
 #include "New_BST.h"
 #include "new_node.h"
 #include "Arr_add.h"
-
+#include "rem.h"
+#include "delete_node.h"
 
 int main()
 {
 
     int arr[]= {4,6,1,5,8,2,9};
     BST * test = arr_add(arr,7);
+
+ 
+
+    //rem(test,6);
 
 
     //--------Test up to gen 3-----------
@@ -32,6 +37,7 @@ int main()
     // int vrc_lc = rc_lc->value;
     // int vlc_lc = lc_lc->value;
     // int vlc_rc = lc_rc->value;
+
 
 
     printf("value at root : %d\n", vroot);
