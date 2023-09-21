@@ -12,8 +12,8 @@ int main()
     int arr[] = {6, 3, 8, 5, 2, 7, 9, 1, 4};
     BST *test = arr_add(arr, 9);
 
-    int a = remove_node(test, 3);
-    printf("nodes removed: %d\n");
+    int a = remove_value(test, 3);
+    printf("nodes removed: %d\n",a);
 
     //--------Test up to gen 3-----------
 

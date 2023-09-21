@@ -4,6 +4,6 @@
 
 void delete_node(node *input, int value);
 
-int remove_node(BST * input,int value);
+int remove_value(BST * input,int value);
 
 #endif

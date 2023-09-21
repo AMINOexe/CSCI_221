@@ -3,30 +3,30 @@
 #include "structs.h"
 
 
-void delete_node(node *input, int value)
+void delete_node(node **input, int value)
 {
 
-    if (value < input->value)
+    if (value < (*input)->value)
     {
-        delete_node(input->left_child, value);
+        delete_node(&(*input)->left_child, value);
     }
-    else if (value > input->value)
+    else if (value > (*input)->value)
     {
-        delete_node(input->right_child, value);
+        delete_node(&(*input)->right_child, value);
     }
     else
     {
-        if (value == input->value)
+        if (value == (*input)->value)
         {
-            if (input->left_child == NULL && input->right_child == NULL)
+            if ((*input)->left_child == NULL && (*input)->right_child == NULL)
             {
-                input = NULL;
+                *input = NULL;
             }
-            else if (input->left_child != NULL)
+            else if ((*input)->left_child != NULL)
             {
-                node * right_subtree = input->right_child;
+                node * right_subtree = (*input)->right_child;
 
-                node * leaf= input->left_child;
+                node * leaf= (*input)->left_child;
 
                 while(leaf->right_child!=NULL){
                     leaf = leaf->right_child;
@@ -34,29 +34,32 @@ void delete_node(node *input, int value)
 
                 leaf->right_child = right_subtree;
 
-                input = input->left_child;
+                *input = (*input)->left_child;
             }
             else
             {
-                input = input->right_child;
+                *input = (*input)->right_child;
             }
         }
     }
 }
 
 
-int remove_node(BST * input,int value){
+int remove_value(BST * input,int value){
 
     if(value > input->root->value){
-        delete_node(input->root->right_child,value);
+        delete_node(&input->root->right_child,value);
+        input->size --;
         return 1;
     }
     else if(value < input->root->value){
-        delete_node(input->root->left_child,value);
+        delete_node(&input->root->left_child,value);
+        input->size --;
         return 1;
     }
     else if(value == input->root->value){
-        delete_node(input->root,value);
+        delete_node(&input->root,value);
+        input->size --;
         return 1;
     }
     else{
